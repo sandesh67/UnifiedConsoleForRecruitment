@@ -1,0 +1,40 @@
+{
+  "recruiter_name": "Anita Sharma",
+  "phoneNumber": "+1-732-555-0189",
+  "companyName": "TechNova Solutions",
+  "email": "anita.sharma@technovasolutions.com",
+  "last_called_update": "2025-12-22T14:35:18Z",
+  "status": "Active",
+  "vendor_handled": [
+    {
+      "vendorName": "ABC Consulting LLC",
+      "vendorContact": "+1-469-555-3421",
+      "vendorEmail": "hr@abcconsulting.com",
+      "technology": ["Java", "Spring Boot", "Microservices"],
+      "lastSubmissionDate": "2025-12-18",
+      "remarks": "Submitted 2 Java profiles"
+    },
+    {
+      "vendorName": "NextGen IT Services",
+      "vendorContact": "+1-408-555-9912",
+      "vendorEmail": "recruitment@nextgenit.com",
+      "technology": ["Node.js", "React", "AWS"],
+      "lastSubmissionDate": "2025-12-20",
+      "remarks": "Waiting for client feedback"
+    }
+  ],
+  "call_history": [
+    {
+      "calledOn": "2025-12-22T14:35:18Z",
+      "callType": "Outgoing",
+      "notes": "Discussed new requirements for Java backend role"
+    },
+    {
+      "calledOn": "2025-12-15T11:10:45Z",
+      "callType": "Incoming",
+      "notes": "Follow-up on previously submitted profiles"
+    }
+  ],
+  "created_at": "2025-12-01T09:00:00Z",
+  "updated_at": "2025-12-22T14:35:18Z"
+}
