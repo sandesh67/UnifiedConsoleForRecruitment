@@ -1,31 +1,51 @@
 import { useEffect, useState } from "react";
+import { Recruiter } from "./types";
+import { FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function RecruitmentDashBoard() {
-
-    const [recruiter, setRecruiter] = useState(null);
+  const [recruiters, setRecruiters] = useState<Recruiter[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-  fetch('http://localhost:3000/recruiters')
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      console.log('Fetched data:', data); // Log the fetched data
-      setRecruiter(data);
-    })
-    .catch((err) => console.error('Fetch error:', err));
-}, []);
+    fetch("http://localhost:3000/recruiters")
+      .then(res => res.json())
+      .then(setRecruiters)
+      .catch(console.error);
+  }, []);
 
-   return (
-  <>
-    <p>Hello Sandesh</p>
-    {recruiter ? <pre>{JSON.stringify(recruiter, null, 2)}</pre> : <p>Loading...</p>}
-  </>
-);
+  const handleEdit = (id: string) => {
+    navigate(`/edit/${id}`);
+  };
 
+  return (
+    <>
+      <h2>Recruiters</h2>
+
+      <table border={1} cellPadding="10">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Phone</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {recruiters.map(r => (
+            <tr key={r.id}>
+              <td>{r.recruiter_name}</td>
+              <td>{r.companyName}</td>
+              <td>{r.phoneNumber}</td>
+              <td>
+                <button onClick={() => handleEdit(r.id)}>✏️</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 }
 
 export default RecruitmentDashBoard;

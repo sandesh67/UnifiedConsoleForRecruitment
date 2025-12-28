@@ -1,26 +1,17 @@
 
 
-const fs = require('fs/promises');
-const express = require('express');
-const cors = require('cors');
+const fs = require("fs/promises");
+const express = require("express");
+const cors = require("cors");
 
-async function loadJson() {
-  const data = await fs.readFile('./data.json', 'utf-8');
-  const json = JSON.parse(data);
-  return json; // ✅ return before using
-}
+const recruiterRoutes = require("./routes/recruiter.routes");
 
 const app = express();
-app.use(cors());
 
-app.get('/recruiters', async (req, res) => {
-  try {
-    const data = await loadJson(); // ✅ await here!
-    res.json(data);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to load JSON' });
-  }
-});
+app.use(cors());
+app.use(express.json());
+
+app.use("/recruiters", recruiterRoutes);
 
 
 module.exports = app;
